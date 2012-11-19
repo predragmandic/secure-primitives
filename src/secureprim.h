@@ -14,67 +14,49 @@ private:
   int m_nSecureIntegerPartB;
   
   int getInt() const;
-  void set(int value);
+  SecureInteger& set(const SecureInteger& other);
+  SecureInteger& set(int value);
+  
   
 public:
-  SecureInteger(int value);
+  SecureInteger(int value = 0);
   operator int() { return getInt(); }
   
-  void operator=(const SecureInteger& other);
-  void operator=(const int& value);
+  SecureInteger& operator=(const SecureInteger& other);
+  SecureInteger& operator=(const int& value);
+  
+  SecureInteger& operator+=(const SecureInteger& other);
+  SecureInteger& operator+=(const int& value);
   
   SecureInteger operator+(const SecureInteger& other) const;
   SecureInteger operator+(const int& value) const;
-  void operator++();
+  SecureInteger& operator++();
+  SecureInteger operator++(int);
   
-  void operator+=(const SecureInteger& other);
-  void operator+=(const int& value);
+  SecureInteger& operator-=(const SecureInteger& other);
+  SecureInteger& operator-=(const int& value);
   
   SecureInteger operator-(const SecureInteger& other) const;
   SecureInteger operator-(const int& value) const;
-  void operator--();
+  SecureInteger& operator--();
+  SecureInteger operator--(int);
   
-  void operator-=(const SecureInteger& other);
-  void operator-=(const int& value);
+  SecureInteger& operator*=(const SecureInteger& other);
+  SecureInteger& operator*=(const int& value);
   
   SecureInteger operator*(const SecureInteger& other) const;
   SecureInteger operator*(const int& value) const;
   
-  void operator*=(const SecureInteger& other);
-  void operator*=(const int& value);
+  SecureInteger& operator/=(const SecureInteger& other);
+  SecureInteger& operator/=(const int& value);
+  
+  SecureInteger operator/(const SecureInteger& other) const;
+  SecureInteger operator/(const int& value) const;
+  
+  SecureInteger& operator%=(const SecureInteger& other);
+  SecureInteger& operator%=(const int& value);
   
   SecureInteger operator%(const SecureInteger& other) const;
   SecureInteger operator%(const int& value) const;
   
-  void operator%=(const SecureInteger& other);
-  void operator%=(const int& value);
-
-  SecureInteger operator/(const SecureInteger& other) const;
-  SecureInteger operator/(const int& value) const;
-  
-  void operator/=(const SecureInteger& other);
-  void operator/=(const int& value);
-  
-  bool operator==(const SecureInteger& other) const;
-  bool operator==(const int& value) const;
-  
-  bool operator>(const SecureInteger& other) const;
-  bool operator>(const int& value) const;
-  
-  bool operator>=(const SecureInteger& other) const;
-  bool operator>=(const int& value) const;
-  
-  bool operator<(const SecureInteger& other) const;
-  bool operator<(const int& value) const;
-  
-  bool operator<=(const SecureInteger& other) const;
-  bool operator<=(const int& value) const;
-  
-  bool operator!=(const SecureInteger& other) const;
-  bool operator!=(const int& value) const;
-  
 };
-
-
-//ostream& operator<<( ostream& os, const SecureInteger& si );
-
