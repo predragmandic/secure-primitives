@@ -1,12 +1,12 @@
 /*
-
-
-
-*/
-
-#include <iostream>
-
-
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ */
+ 
 class SecureInteger {
   
 private:
