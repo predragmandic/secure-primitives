@@ -1,4 +1,4 @@
 secure-primitives
 =================
 
-Set of classes that imitate primitive data types in C++. The difference is that they do not store raw values in memory and thus prevent using tools such as scanmem to locate and modify them. Good for preventing game cheats.
+The idea is to have entities that emulate primitive data types (support casting and operators that behave in the same way) but never store raw data in memory. This will prevent using tools such as "scanmem" to manipulate the data by searching and accessing memory directly. As a result, a program/game that stores its sensitive data as secure-primitives, gets more durable to cheats and "game trainers".
