@@ -551,6 +551,8 @@ bool test_moduloCompatibleType() {
 
 int main() {
   srand ( time(0) );
+  std::cout << "\n\n";
+  std::cout << "Testing....\n";
   
   std::cout << "\n" << (test_assignSamePrimType() ? "  pass  " : ">> FAIL ") << "  test_assignSamePrimType";
   std::cout << "\n" << (test_assignSameType() ? "  pass  " : ">> FAIL ") << "  test_assignSameType";
@@ -596,6 +598,9 @@ int main() {
   std::cout << "\n" << (test_moduloSameType() ? "  pass  " : ">> FAIL ") << "  test_moduloSameType";
   std::cout << "\n" << (test_moduloCompatiblePrimType() ? "  pass  " : ">> FAIL ") << "  test_moduloCompatiblePrimType";
   std::cout << "\n" << (test_moduloCompatibleType() ? "  pass  " : ">> FAIL ") << "  test_moduloCompatibleType";
+  std::cout << "\n\n";
+  std::cout << "Test complete.";
+  std::cout << "\n\n";
   
   return 0;
 }

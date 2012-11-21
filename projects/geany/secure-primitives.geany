@@ -25,15 +25,16 @@ long_line_column=80
 
 [files]
 current_page=1
-FILE_NAME_0=334;C++;0;16;0;1;0;%2Fhome%2Fftp%2Fgit%2Fgithub%2Fsecure-primitives%2Fsrc%2Fsecureprim.hpp;0;2
-FILE_NAME_1=31;C++;0;16;0;1;0;%2Fhome%2Fftp%2Fgit%2Fgithub%2Fsecure-primitives%2Fsrc%2Ftest.cpp;0;2
+FILE_NAME_0=5438;C++;0;16;0;1;0;%2Fhome%2Fftp%2Fgit%2Fgithub%2Fsecure-primitives%2Fsrc%2Fsecureprim.hpp;0;2
+FILE_NAME_1=19844;C++;0;16;0;1;0;%2Fhome%2Fftp%2Fgit%2Fgithub%2Fsecure-primitives%2Fsrc%2Ftest.cpp;0;2
+FILE_NAME_2=323;C;0;16;0;1;0;%2Fhome%2Fftp%2Fgit%2Fgithub%2Fsecure-primitives%2Fsrc%2Ftest.h;0;2
 
 [VTE]
 last_dir=/home/pmandic
 
 [build-menu]
 NF_00_LB=_Make
-NF_00_CM=make
+NF_00_CM=cd ../; make
 NF_00_WD=
 NF_01_LB=Make Custom _Target
 NF_01_CM=make 
