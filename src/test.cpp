@@ -14,9 +14,6 @@
 #include <string.h>
 
 
-
-
-
 //asign
 
 bool test_assignSamePrimType() {
@@ -28,7 +25,6 @@ bool test_assignSamePrimType() {
   
   return status;
 }
-
 bool test_assignSameType() {
   bool status = false;
   INT value1(TEST_VALUE_1);
@@ -39,7 +35,6 @@ bool test_assignSameType() {
   
   return status;
 }
-
 bool test_assignCompatiblePrimType() {
   bool status = false;
   INT     value1(TEST_VALUE_1);
@@ -58,7 +53,6 @@ bool test_assignCompatiblePrimType() {
   
   return status;
 }
-
 bool test_assignCompatibleType() {
   bool status = false;
   INT     value1(TEST_VALUE_1);
@@ -127,7 +121,6 @@ bool test_addAssignCompatibleType() {
   return status;
 }
 
-
 //add
 bool test_addSamePrimType() {
   bool status = false;
@@ -174,8 +167,6 @@ bool test_addCompatibleType() {
   return status;
 }
 
-
-
 //subtract and assign
 bool test_subtractAssignSamePrimType() {
   bool status = false;
@@ -219,139 +210,347 @@ bool test_subtractAssignCompatibleType() {
   value2 = TEST_VALUE_2;
   
   value2 -= value1;
-  bool status2 = (value2==TEST_VALUE_1-TEST_VALUE_2 && value1==TEST_VALUE_1 && TEST_VALUE_1!=TEST_VALUE_2 && value1!=value2);
+  bool status2 = (value2==TEST_VALUE_2-TEST_VALUE_1 && value1==TEST_VALUE_1 && TEST_VALUE_1!=TEST_VALUE_2 && value1!=value2);
   
   status = status1 && status2;
   return status;
 }
 
-
-
 //subtract
 bool test_subtractSamePrimType() {
-  return false;
+  bool status = false;
+  INT value1(TEST_VALUE_1);
+  int value2 = TEST_VALUE_2;
+  INT value3(0);
+  
+  value3 = value1 - value2;
+  status = (value3==TEST_VALUE_1-TEST_VALUE_2 && TEST_VALUE_1!=TEST_VALUE_2 && value1==TEST_VALUE_1 && value2==TEST_VALUE_2);
+  
+  return status;
 }
 bool test_subtractSameType() {
-  return false;
+  bool status = false;
+  INT value1(TEST_VALUE_1);
+  INT value2 = TEST_VALUE_2;
+  INT value3(0);
+  
+  value3 = value1 - value2;
+  status = (value3==TEST_VALUE_1-TEST_VALUE_2 && TEST_VALUE_1!=TEST_VALUE_2 && value1==TEST_VALUE_1 && value2==TEST_VALUE_2);
+  
+  return status;
 }
 bool test_subtractCompatiblePrimType() {
-  return false;
+  bool status = false;
+  INT     value1(TEST_VALUE_1);
+  double  value2 = TEST_VALUE_2;
+  INT     value3(0);
+  
+  value3 = value1 - value2;
+  status = (value3==TEST_VALUE_1-TEST_VALUE_2 && TEST_VALUE_1!=TEST_VALUE_2 && value1==TEST_VALUE_1 && value2==TEST_VALUE_2);
+  
+  return status;
 }
 bool test_subtractCompatibleType() {
-  return false;
+  bool status = false;
+  INT     value1(TEST_VALUE_1);
+  DOUBLE  value2 = TEST_VALUE_2;
+  INT     value3(0);
+  
+  value3 = value1 - value2;
+  status = (value3==TEST_VALUE_1-TEST_VALUE_2 && TEST_VALUE_1!=TEST_VALUE_2 && value1==TEST_VALUE_1 && value2==TEST_VALUE_2);
+  
+  return status;
 }
-
-
 
 //multiply and assign
 bool test_multiplyAssignSamePrimType() {
-  return false;
+  bool status = false;
+  INT value1(TEST_VALUE_1);
+  int value2 = TEST_VALUE_2;
+  
+  value1 *= value2;
+  status = (value1==TEST_VALUE_1*TEST_VALUE_2 && TEST_VALUE_1!=TEST_VALUE_2);
+  
+  return status;
 }
 bool test_multiplyAssignSameType() {
-  return false;
+  bool status = false;
+  INT value1(TEST_VALUE_1);
+  INT value2(TEST_VALUE_2);
+  
+  value1 *= value2;
+  status = (value1==TEST_VALUE_1*TEST_VALUE_2 && value2==TEST_VALUE_2 && TEST_VALUE_1!=TEST_VALUE_2 && value1!=value2);
+  
+  return status;
 }
 bool test_multiplyAssignCompatiblePrimType() {
-  return false;
+  bool status = false;
+  INT value1(TEST_VALUE_1);
+  double value2 = TEST_VALUE_2;
+  
+  value1 *= value2;
+  status = (value1==TEST_VALUE_1*TEST_VALUE_2 && TEST_VALUE_1!=TEST_VALUE_2);
+  
+  return status;
 }
 bool test_multiplyAssignCompatibleType() {
-  return false;
+  bool status = false;
+  INT     value1(TEST_VALUE_1);
+  DOUBLE  value2(TEST_VALUE_2);
+  
+  value1 *= value2;
+  bool status1 = (value1==TEST_VALUE_1*TEST_VALUE_2 && value2==TEST_VALUE_2 && TEST_VALUE_1!=TEST_VALUE_2 && value1!=value2);
+  
+  value1 = TEST_VALUE_1;
+  value2 = TEST_VALUE_2;
+  
+  value2 *= value1;
+  bool status2 = (value2==TEST_VALUE_1*TEST_VALUE_2 && value1==TEST_VALUE_1 && TEST_VALUE_1!=TEST_VALUE_2 && value1!=value2);
+  
+  status = status1 && status2;
+  return status;
 }
-
-
 
 //multiply
 bool test_multiplySamePrimType() {
-  return false;
+  bool status = false;
+  INT value1(TEST_VALUE_1);
+  int value2 = TEST_VALUE_2;
+  INT value3(0);
+  
+  value3 = value1 * value2;
+  status = (value3==TEST_VALUE_1*TEST_VALUE_2 && TEST_VALUE_1!=TEST_VALUE_2 && value1==TEST_VALUE_1 && value2==TEST_VALUE_2);
+  
+  return status;
 }
 bool test_multiplySameType() {
-  return false;
+  bool status = false;
+  INT value1(TEST_VALUE_1);
+  INT value2 = TEST_VALUE_2;
+  INT value3(0);
+  
+  value3 = value1 * value2;
+  status = (value3==TEST_VALUE_1*TEST_VALUE_2 && TEST_VALUE_1!=TEST_VALUE_2 && value1==TEST_VALUE_1 && value2==TEST_VALUE_2);
+  
+  return status;
 }
 bool test_multiplyCompatiblePrimType() {
-  return false;
+  bool status = false;
+  INT     value1(TEST_VALUE_1);
+  double  value2 = TEST_VALUE_2;
+  INT     value3(0);
+  
+  value3 = value1 * value2;
+  status = (value3==TEST_VALUE_1*TEST_VALUE_2 && TEST_VALUE_1!=TEST_VALUE_2 && value1==TEST_VALUE_1 && value2==TEST_VALUE_2);
+  
+  return status;
 }
 bool test_multiplyCompatibleType() {
-  return false;
+  bool status = false;
+  INT     value1(TEST_VALUE_1);
+  DOUBLE  value2 = TEST_VALUE_2;
+  INT     value3(0);
+  
+  value3 = value1 * value2;
+  status = (value3==TEST_VALUE_1*TEST_VALUE_2 && TEST_VALUE_1!=TEST_VALUE_2 && value1==TEST_VALUE_1 && value2==TEST_VALUE_2);
+  
+  return status;
 }
-
-
-
 
 //divide and assign
 bool test_divideAssignSamePrimType() {
-  return false;
+  bool status = false;
+  INT value1(TEST_VALUE_1);
+  int value2 = TEST_VALUE_2;
+  
+  value1 /= value2;
+  status = (value1==TEST_VALUE_1/TEST_VALUE_2 && TEST_VALUE_1!=TEST_VALUE_2);
+  
+  return status;
 }
 bool test_divideAssignSameType() {
-  return false;
+  bool status = false;
+  INT value1(TEST_VALUE_1);
+  INT value2(TEST_VALUE_2);
+  
+  value1 /= value2;
+  status = (value1==TEST_VALUE_1/TEST_VALUE_2 && value2==TEST_VALUE_2 && TEST_VALUE_1!=TEST_VALUE_2 && value1!=value2);
+  
+  return status;
 }
 bool test_divideAssignCompatiblePrimType() {
-  return false;
+  bool status = false;
+  INT value1(TEST_VALUE_1);
+  double value2 = TEST_VALUE_2;
+  
+  value1 /= value2;
+  status = (value1==TEST_VALUE_1/TEST_VALUE_2 && TEST_VALUE_1!=TEST_VALUE_2);
+  
+  return status;
 }
 bool test_divideAssignCompatibleType() {
-  return false;
+  bool status = false;
+  INT     value1(TEST_VALUE_1);
+  DOUBLE  value2(TEST_VALUE_2);
+  
+  value1 /= value2;
+  bool status1 = (value1==TEST_VALUE_1/TEST_VALUE_2 && value2==TEST_VALUE_2 && TEST_VALUE_1!=TEST_VALUE_2 && value1!=value2);
+  
+  value1 = TEST_VALUE_1;
+  value2 = TEST_VALUE_2;
+  
+  value2 /= value1;
+  bool status2 = (value2==double(TEST_VALUE_2)/double(TEST_VALUE_1) && value1==TEST_VALUE_1 && TEST_VALUE_1!=TEST_VALUE_2 && value1!=value2);
+  
+  status = status1 && status2;
+  return status;
 }
-
-
-
 
 //divide
 bool test_divideSamePrimType() {
-  return false;
+  bool status = false;
+  INT value1(TEST_VALUE_1);
+  int value2 = TEST_VALUE_2;
+  INT value3(0);
+  
+  value3 = value1 / value2;
+  status = (value3==TEST_VALUE_1/TEST_VALUE_2 && TEST_VALUE_1!=TEST_VALUE_2 && value1==TEST_VALUE_1 && value2==TEST_VALUE_2);
+  
+  return status;
 }
 bool test_divideSameType() {
-  return false;
+  bool status = false;
+  INT value1(TEST_VALUE_1);
+  INT value2 = TEST_VALUE_2;
+  INT value3(0);
+  
+  value3 = value1 / value2;
+  status = (value3==TEST_VALUE_1/TEST_VALUE_2 && TEST_VALUE_1!=TEST_VALUE_2 && value1==TEST_VALUE_1 && value2==TEST_VALUE_2);
+  
+  return status;
 }
 bool test_divideCompatiblePrimType() {
-  return false;
+  bool status = false;
+  INT     value1(TEST_VALUE_1);
+  double  value2 = TEST_VALUE_2;
+  INT     value3(0);
+  
+  value3 = value1 / value2;
+  status = (value3==TEST_VALUE_1/TEST_VALUE_2 && TEST_VALUE_1!=TEST_VALUE_2 && value1==TEST_VALUE_1 && value2==TEST_VALUE_2);
+  
+  return status;
 }
 bool test_divideCompatibleType() {
-  return false;
+  bool status = false;
+  INT     value1(TEST_VALUE_1);
+  DOUBLE  value2 = TEST_VALUE_2;
+  INT     value3(0);
+  
+  value3 = value1 / value2;
+  status = (value3==TEST_VALUE_1/TEST_VALUE_2 && TEST_VALUE_1!=TEST_VALUE_2 && value1==TEST_VALUE_1 && value2==TEST_VALUE_2);
+  
+  return status;
 }
-
-
-
 
 //modulo and assign
 bool test_moduloAssignSamePrimType() {
-  return false;
+  bool status = false;
+  INT value1(TEST_VALUE_1);
+  int value2 = TEST_VALUE_2;
+  
+  value1 %= value2;
+  status = (value1==TEST_VALUE_1%TEST_VALUE_2 && TEST_VALUE_1!=TEST_VALUE_2);
+  
+  return status;
 }
 bool test_moduloAssignSameType() {
-  return false;
+  bool status = false;
+  INT value1(TEST_VALUE_1);
+  INT value2(TEST_VALUE_2);
+  
+  value1 %= value2;
+  status = (value1==TEST_VALUE_1%TEST_VALUE_2 && value2==TEST_VALUE_2 && TEST_VALUE_1!=TEST_VALUE_2 && value1!=value2);
+  
+  return status;
 }
 bool test_moduloAssignCompatiblePrimType() {
-  return false;
+  bool status = false;
+  INT value1(TEST_VALUE_1);
+  long int value2 = TEST_VALUE_2;
+  
+  value1 %= value2;
+  status = (value1==TEST_VALUE_1%TEST_VALUE_2 && TEST_VALUE_1!=TEST_VALUE_2);
+  
+  return status;
 }
 bool test_moduloAssignCompatibleType() {
-  return false;
+  bool status = false;
+  INT       value1(TEST_VALUE_1);
+  LONG_INT  value2(TEST_VALUE_2);
+  
+  value1 %= value2;
+  bool status1 = (value1==TEST_VALUE_1%TEST_VALUE_2 && value2==TEST_VALUE_2 && TEST_VALUE_1!=TEST_VALUE_2 && value1!=value2);
+  
+  value1 = TEST_VALUE_1;
+  value2 = TEST_VALUE_3;
+  
+  value2 %= value1;
+  bool status2 = (value2==TEST_VALUE_3%TEST_VALUE_1 && value1==TEST_VALUE_1 && TEST_VALUE_1!=TEST_VALUE_3 && value1!=value2);
+  
+  status = status1 && status2;
+  return status;
 }
-
-
-
 
 //modulo
 bool test_moduloSamePrimType() {
-  return false;
+  bool status = false;
+  INT value1(TEST_VALUE_1);
+  int value2 = TEST_VALUE_2;
+  INT value3(0);
+  
+  value3 = value1 % value2;
+  status = (value3==TEST_VALUE_1%TEST_VALUE_2 && TEST_VALUE_1!=TEST_VALUE_2 && value1==TEST_VALUE_1 && value2==TEST_VALUE_2);
+  
+  return status;
 }
 bool test_moduloSameType() {
-  return false;
+  bool status = false;
+  INT value1(TEST_VALUE_1);
+  INT value2 = TEST_VALUE_2;
+  INT value3(0);
+  
+  value3 = value1 % value2;
+  status = (value3==TEST_VALUE_1%TEST_VALUE_2 && TEST_VALUE_1!=TEST_VALUE_2 && value1==TEST_VALUE_1 && value2==TEST_VALUE_2);
+  
+  return status;
 }
 bool test_moduloCompatiblePrimType() {
-  return false;
+  bool status = false;
+  INT       value1(TEST_VALUE_1);
+  long int  value2 = TEST_VALUE_2;
+  INT       value3(0);
+  
+  value3 = value1 % value2;
+  status = (value3==TEST_VALUE_1%TEST_VALUE_2 && TEST_VALUE_1!=TEST_VALUE_2 && value1==TEST_VALUE_1 && value2==TEST_VALUE_2);
+  
+  return status;
 }
 bool test_moduloCompatibleType() {
-  return false;
+  bool status = false;
+  INT       value1(TEST_VALUE_1);
+  LONG_INT  value2 = TEST_VALUE_2;
+  INT       value3(0);
+  
+  value3 = value1 % value2;
+  status = (value3==TEST_VALUE_1%TEST_VALUE_2 && TEST_VALUE_1!=TEST_VALUE_2 && value1==TEST_VALUE_1 && value2==TEST_VALUE_2);
+  
+  return status;
 }
-
-
-
 
 
 
 int main() {
   srand ( time(0) );
-  
-  
-  //std::cout << "\n" << (test_addAssignCompatiblePrimType() ? "  pass  " : ">> FAIL ") << "  test_addAssignCompatiblePrimType";
-  
   
   std::cout << "\n" << (test_assignSamePrimType() ? "  pass  " : ">> FAIL ") << "  test_assignSamePrimType";
   std::cout << "\n" << (test_assignSameType() ? "  pass  " : ">> FAIL ") << "  test_assignSameType";
@@ -397,7 +596,6 @@ int main() {
   std::cout << "\n" << (test_moduloSameType() ? "  pass  " : ">> FAIL ") << "  test_moduloSameType";
   std::cout << "\n" << (test_moduloCompatiblePrimType() ? "  pass  " : ">> FAIL ") << "  test_moduloCompatiblePrimType";
   std::cout << "\n" << (test_moduloCompatibleType() ? "  pass  " : ">> FAIL ") << "  test_moduloCompatibleType";
-  
   
   return 0;
 }
