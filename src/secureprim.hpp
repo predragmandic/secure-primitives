@@ -173,8 +173,8 @@ SecurePrim<T>& SecurePrim<T>::operator++() {
 // x++
 template <class T>
 SecurePrim<T> SecurePrim<T>::operator++(int) {
-  SecurePrim<T> pre_increment = decode();
-  set(decode() + 1);
+  T pre_increment = decode();
+  set(pre_increment + 1);
   return pre_increment;
 }
 
@@ -197,9 +197,9 @@ SecurePrim<T>& SecurePrim<T>::operator--() {
 // x--
 template <class T>
 SecurePrim<T> SecurePrim<T>::operator--(int) {
-  SecurePrim<T> pre_increment = decode();
-  set(decode() - 1);
-  return pre_increment;
+  T pre_decrement = decode();
+  set(pre_decrement - 1);
+  return pre_decrement;
 }
 
 // *=

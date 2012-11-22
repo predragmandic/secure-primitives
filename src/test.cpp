@@ -12,7 +12,7 @@
 #include <stdlib.h>
 #include <iostream>
 #include <string.h>
-
+#include <sys/time.h>
 
 //asign
 
@@ -167,6 +167,28 @@ bool test_addCompatibleType() {
   return status;
 }
 
+//increment prefix
+bool test_incrementPrefix() {
+  bool status = false;
+  INT value1(TEST_VALUE_1);
+  int value2 = TEST_VALUE_1;
+  
+  status = (++value1 == value2+1);
+  return status;
+}
+
+//increment suffix
+bool test_incrementSuffix() {
+  bool status = false;
+  INT value1(TEST_VALUE_1);
+  int value2 = TEST_VALUE_1;
+  
+  status = (value1++ == value2);
+  status = status && (value1 == value2+1);
+  
+  return status;
+}
+
 //subtract and assign
 bool test_subtractAssignSamePrimType() {
   bool status = false;
@@ -261,6 +283,28 @@ bool test_subtractCompatibleType() {
   
   return status;
 }
+
+//decrement prefix
+bool test_decrementPrefix() {
+  bool status = false;
+  INT value1(TEST_VALUE_1);
+  int value2 = TEST_VALUE_1;
+  
+  status = (--value1 == value2-1);
+  return status;
+}
+
+//decrement suffix
+bool test_decrementSuffix() {
+  bool status = false;
+  INT value1(TEST_VALUE_1);
+  int value2 = TEST_VALUE_1;
+  
+  status = (value1-- == value2);
+  status = status && (value1 == value2-1);
+  return status;
+}
+
 
 //multiply and assign
 bool test_multiplyAssignSamePrimType() {
@@ -547,12 +591,145 @@ bool test_moduloCompatibleType() {
   return status;
 }
 
+double speed_test_asign() {
+  timeval start, end;
+  unsigned int testTime = 0;
+  unsigned int compareTime = 0;
+  
+  SecurePrim<unsigned int> testValue(0);
+  unsigned int compareValue = 0;
+  
+  for(int i=0; i < 100000; i++) {
+    gettimeofday(&start, NULL);
+    testValue = 5;
+    gettimeofday(&end, NULL);
+    testTime += (end.tv_usec - start.tv_usec);
+  }
+  
+  for(int i=0; i < 100000; i++) {
+    gettimeofday(&start, NULL);
+    compareValue = 5;
+    gettimeofday(&end, NULL);
+    compareTime += (end.tv_usec - start.tv_usec);
+  }
+  
+  //~ std::cout << "\n" << testValue;
+  //~ std::cout << "\n" << compareValue;
+  //~ std::cout << "\n" << testTime;
+  //~ std::cout << "\n" << compareTime;
+  
+  return double(testTime) / double(compareTime);
+}
 
+
+double speed_test_preincrement() {
+  timeval start, end;
+  unsigned int testTime = 0;
+  unsigned int compareTime = 0;
+  
+  SecurePrim<unsigned int> testValue(0);
+  unsigned int compareValue = 0;
+  
+  for(int i=0; i < 100000; i++) {
+    gettimeofday(&start, NULL);
+    ++testValue;
+    gettimeofday(&end, NULL);
+    testTime += (end.tv_usec - start.tv_usec);
+  }
+  
+  for(int i=0; i < 100000; i++) {
+    gettimeofday(&start, NULL);
+    ++compareValue;
+    gettimeofday(&end, NULL);
+    compareTime += (end.tv_usec - start.tv_usec);
+  }
+  
+  return double(testTime) / double(compareTime);
+}
+
+double speed_test_postincrement() {
+  timeval start, end;
+  unsigned int testTime = 0;
+  unsigned int compareTime = 0;
+  
+  SecurePrim<unsigned int> testValue(0);
+  unsigned int compareValue = 0;
+  
+  for(int i=0; i < 100000; i++) {
+    gettimeofday(&start, NULL);
+    testValue++;
+    gettimeofday(&end, NULL);
+    testTime += (end.tv_usec - start.tv_usec);
+  }
+  
+  for(int i=0; i < 100000; i++) {
+    gettimeofday(&start, NULL);
+    compareValue++;
+    gettimeofday(&end, NULL);
+    compareTime += (end.tv_usec - start.tv_usec);
+  }
+  
+  return double(testTime) / double(compareTime);
+}
+
+double speed_test_addasign_primitive() {
+  timeval start, end;
+  unsigned int testTime = 0;
+  unsigned int compareTime = 0;
+  
+  SecurePrim<unsigned int> testValue1(TEST_VALUE_1);
+  SecurePrim<unsigned int> testValue2(TEST_VALUE_2);
+  unsigned int compareValue1 = TEST_VALUE_1;
+  unsigned int compareValue2 = TEST_VALUE_2;
+  
+  for(int i=0; i < 100000; i++) {
+    gettimeofday(&start, NULL);
+    testValue1 += compareValue2;
+    gettimeofday(&end, NULL);
+    testTime += (end.tv_usec - start.tv_usec);
+  }
+  
+  for(int i=0; i < 100000; i++) {
+    gettimeofday(&start, NULL);
+    compareValue1 += compareValue2;
+    gettimeofday(&end, NULL);
+    compareTime += (end.tv_usec - start.tv_usec);
+  }
+  
+  return double(testTime) / double(compareTime);
+}
+double speed_test_addasign() {
+  timeval start, end;
+  unsigned int testTime = 0;
+  unsigned int compareTime = 0;
+  
+  SecurePrim<unsigned int> testValue1(TEST_VALUE_1);
+  SecurePrim<unsigned int> testValue2(TEST_VALUE_2);
+  unsigned int compareValue1 = TEST_VALUE_1;
+  unsigned int compareValue2 = TEST_VALUE_2;
+  
+  for(int i=0; i < 100000; i++) {
+    gettimeofday(&start, NULL);
+    testValue1 += testValue2;
+    gettimeofday(&end, NULL);
+    testTime += (end.tv_usec - start.tv_usec);
+  }
+  
+  for(int i=0; i < 100000; i++) {
+    gettimeofday(&start, NULL);
+    compareValue1 += compareValue2;
+    gettimeofday(&end, NULL);
+    compareTime += (end.tv_usec - start.tv_usec);
+  }
+  
+  return double(testTime) / double(compareTime);
+}
 
 int main() {
   srand ( time(0) );
+  
   std::cout << "\n\n";
-  std::cout << "Testing....\n";
+  std::cout << "Testing operators....\n";
   
   std::cout << "\n" << (test_assignSamePrimType() ? "  pass  " : ">> FAIL ") << "  test_assignSamePrimType";
   std::cout << "\n" << (test_assignSameType() ? "  pass  " : ">> FAIL ") << "  test_assignSameType";
@@ -566,6 +743,10 @@ int main() {
   std::cout << "\n" << (test_addSameType() ? "  pass  " : ">> FAIL ") << "  test_addSameType";
   std::cout << "\n" << (test_addCompatiblePrimType() ? "  pass  " : ">> FAIL ") << "  test_addCompatiblePrimType";
   std::cout << "\n" << (test_addCompatibleType() ? "  pass  " : ">> FAIL ") << "  test_addCompatibleType";
+  
+  std::cout << "\n" << (test_incrementPrefix() ? "  pass  " : ">> FAIL ") << "  test_incrementPrefix";
+  std::cout << "\n" << (test_incrementSuffix() ? "  pass  " : ">> FAIL ") << "  test_incrementSuffix";
+  
   std::cout << "\n" << (test_subtractAssignSamePrimType() ? "  pass  " : ">> FAIL ") << "  test_subtractAssignSamePrimType";
   std::cout << "\n" << (test_subtractAssignSameType() ? "  pass  " : ">> FAIL ") << "  test_subtractAssignSameType";
   std::cout << "\n" << (test_subtractAssignCompatiblePrimType() ? "  pass  " : ">> FAIL ") << "  test_subtractAssignCompatiblePrimType";
@@ -574,6 +755,10 @@ int main() {
   std::cout << "\n" << (test_subtractSameType() ? "  pass  " : ">> FAIL ") << "  test_subtractSameType";
   std::cout << "\n" << (test_subtractCompatiblePrimType() ? "  pass  " : ">> FAIL ") << "  test_subtractCompatiblePrimType";
   std::cout << "\n" << (test_subtractCompatibleType() ? "  pass  " : ">> FAIL ") << "  test_subtractCompatibleType";
+  
+  std::cout << "\n" << (test_decrementPrefix() ? "  pass  " : ">> FAIL ") << "  test_decrementPrefix";
+  std::cout << "\n" << (test_decrementSuffix() ? "  pass  " : ">> FAIL ") << "  test_decrementSuffix";
+  
   std::cout << "\n" << (test_multiplyAssignSamePrimType() ? "  pass  " : ">> FAIL ") << "  test_multiplyAssignSamePrimType";
   std::cout << "\n" << (test_multiplyAssignSameType() ? "  pass  " : ">> FAIL ") << "  test_multiplyAssignSameType";
   std::cout << "\n" << (test_multiplyAssignCompatiblePrimType() ? "  pass  " : ">> FAIL ") << "  test_multiplyAssignCompatiblePrimType";
@@ -601,6 +786,15 @@ int main() {
   std::cout << "\n\n";
   std::cout << "Test complete.";
   std::cout << "\n\n";
+  
+  std::cout << "\n\n";
+  std::cout << "Testing operation speed....\n";
+  std::cout << "\n" << "TEST speed_test_asign:               normal * " << speed_test_asign();
+  std::cout << "\n" << "TEST speed_test_preincrement:        normal * " << speed_test_preincrement();
+  std::cout << "\n" << "TEST speed_test_postincrement:       normal * " << speed_test_postincrement();
+  std::cout << "\n" << "TEST speed_test_addasign_primitive:  normal * " << speed_test_addasign_primitive();
+  std::cout << "\n" << "TEST speed_test_addasign:            normal * " << speed_test_addasign();
+  
   
   return 0;
 }
