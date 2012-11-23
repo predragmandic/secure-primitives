@@ -794,6 +794,7 @@ int main() {
   std::cout << "\n" << "TEST speed_test_postincrement:       normal * " << speed_test_postincrement();
   std::cout << "\n" << "TEST speed_test_addasign_primitive:  normal * " << speed_test_addasign_primitive();
   std::cout << "\n" << "TEST speed_test_addasign:            normal * " << speed_test_addasign();
+  std::cout << "\n\n";
   
   
   return 0;
